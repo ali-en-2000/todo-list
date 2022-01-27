@@ -1,0 +1,231 @@
+@font-face {
+    font-family: "babes";
+    font-style: normal; 
+    font-weight: normal;
+    src: url("../font/Bebas\ Neue\ Pro\ Bold.otf") format("truetype");
+}
+@font-face {
+    font-family: "montsratt";
+    font-style: normal; 
+    font-weight: normal;
+    src: url("../font/Montserrat-VariableFont_wght.ttf") format("truetype");
+}
+.main{
+    position: relative;
+    width: 390px !important;
+    height: 844px !important;
+    margin: auto;    
+  
+}
+.header{
+    position: relative;
+    padding-top:50px ;
+}
+
+.gear img{
+    width: 25px;
+    padding: 7px 0 0 0;
+}
+
+.header p{
+    font-family: "babes";
+    font-size: 24px;
+    color: #F79E89;
+    margin: auto ;
+    letter-spacing: 1px;
+    transform: scale(1,1);
+}
+.navListOfTodo{
+    height: 60px;
+    margin-top: 5px;
+ }
+.logoTodo img{
+    margin-top: 10px;
+    width: 40px;
+    height: 38px;
+}
+.listOfTodo{
+    font-size: 36px;
+    font-family: "babes";
+    color: #f76c6aee;
+    letter-spacing: 1px;
+}
+.filterLogo img{
+    margin-top: 18px;
+    width: 21px;
+}
+
+.newTodo-btn img{
+    width: 63px;
+    z-index: 100;
+}
+
+.newTodo{
+    position: absolute;
+    bottom: 22px;
+    right: 30px;
+}
+/* //////////////////////////////////////////////////////////////// */
+.ant-drawer-header {
+    display: none;
+}
+
+.ant-drawer{
+    width: 384px !important;
+    height: 843px !important;
+    overflow: hidden;
+    top: 0;    
+    left: 50%;
+    transform: translate(-50%, 0%)   ;
+    background-color: rgba(182, 27, 27, 0) 
+}
+
+.ant-drawer-content-wrapper {
+     border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    height: 745px !important;
+}
+
+.ant-drawer-mask { 
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.ant-drawer-body {    
+    color: rgb(202, 68, 68);
+    height: calc(100vh - 55px);
+}
+
+.ant-drawer-content {
+    background-color: #F79E89;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+
+hr{
+    width: 80px;
+    height: 7px;
+    border:none;
+    background-color:rgba(243, 243, 243, 0.678) ;
+    border-radius: 10px;
+    margin-top: -8px;    
+}
+
+
+.input-newTodo:hover{
+    border: 3px solid rgba(243, 243, 243, 0.603);
+}
+
+.input-newTodo{
+    width: 320px ;
+    height: 48px;
+    border-radius: 10px;
+    font-family: "montsratt";
+    background-color: #F79E89;
+    border: 3px solid rgba(243, 243, 243, 0.603);
+    margin-top: 11px;
+    font-size: 17px;
+}
+
+.description{
+    width: 320px ;
+    top: 15px;
+    height: 420px;
+    background-color: #F79E89;
+    border: 3px solid rgba(243, 243, 243, 0.603);
+    border-radius: 10px;
+    font-family: "montsratt";
+    font-size: 17px;
+}
+.description:hover{
+    border: 3px solid rgba(243, 243, 243, 0.603);
+ }
+.rc-textarea{
+     height: 420px;
+    background-color: #F79E89;
+
+}
+.rc-textarea::placeholder,
+.input-newTodo::placeholder{
+    color: rgba(243, 243, 243, 0.603) !important;
+ }
+
+
+.ant-picker:hover{
+    border: 3px solid rgba(243, 243, 243, 0.603);
+
+}
+.ant-picker{
+    border: 3px solid rgba(243, 243, 243, 0.603);
+    width: 320px ;
+    height: 48px;
+    border-radius: 10px;
+    background-color: #F79E89;
+    font-size: 23px;
+    top: 30px;
+}
+
+.ant-picker input::placeholder{
+    color: rgb(231, 231, 231) !important;
+    font-family: "montsratt";
+    letter-spacing: .8px;
+    font-size: 17px;
+    color: rgba(243, 243, 243, 0.603) !important;
+}
+
+
+.ant-picker-suffix span{
+    color: rgba(243, 243, 243, 0.603) !important;
+}
+
+
+.upload .ant-btn{
+    background-color: #F79E89;
+    border: 3px solid rgba(243, 243, 243, 0.603);   
+    color: rgba(243, 243, 243, 0.603);
+    width: 320px ;
+    height: 48px;
+    border-radius: 10px;
+    font-family: "montsratt";
+    margin-top: 45px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;    
+}
+
+.upload .ant-btn p{
+    margin-left: -100px;
+}
+.gallery{
+    width: 20px;
+}
+.add-todo-btn{
+    width: 320px ;
+    height: 48px;
+    border-radius: 10px;
+    font-family: "montsratt";
+    letter-spacing: .5px;
+    background-color: rgb(231, 231, 231) !important;
+    color: #f79d89e5 !important;
+    margin-top: 14px ;
+    text-align: center;
+}
+.add-todo-btn:hover{
+    border-color: beige;
+}
+
+.anticon-upload svg{
+    display: none !important;
+}
+
+.ant-drawer-body input,
+.input-newTodo input,
+.description textarea
+{
+    color: rgb(231, 231, 231) ;
+}
+.ant-input::selection{
+    border-color: rgb(231, 231, 231) !important;
+
+}

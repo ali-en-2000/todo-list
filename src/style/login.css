@@ -1,0 +1,78 @@
+.icon{
+    position: relative;
+    width: 390px !important;
+    height: 844px !important;
+    margin: auto;
+    border: 1px solid red;
+ }Y
+.todo-image{
+    position:relative;
+    top: 20% !important;
+    margin-left: 17% ;
+    width: 66% !important;    
+}
+
+.login-form{
+    bottom: 20px !important;
+    position: absolute;
+    height: 300px;
+    width: 86%;
+    left: 7%;
+}
+
+.input-value{
+    height: 48px;
+    border-radius: 10px !important;
+    padding: 0 15px !important;
+    border: 2px solid #a5a5a5cc !important;
+    top: -10px;
+}
+
+#placeholder0{
+    margin-top: 27px !important;
+    margin-bottom: -10px !important;
+}
+#placeholder0::placeholder{
+    color: #a5a5a5cc !important;
+    font-size: 18px !important;
+} 
+#placeholder1::placeholder{
+    color: #a5a5a5cc;
+    font-size: 18px;
+}
+
+.login-form-forgot{
+    display: flex;
+    justify-content: flex-end;
+    color: #b3b1b1;
+    margin-top: 1px;
+    font-size: 97%;
+}
+
+.sign-in-btn{
+    letter-spacing: 1px;
+    color: #dfdbdbd5;
+    font-weight: 500;
+    height:48px !important; 
+    background-color:#F79E89 !important;
+    border:none !important;
+    border-radius:10px !important;
+    margin-top: -15px;
+    padding:10px 0 !important;
+}
+
+.link-sign-up{
+    width: 100%;
+    position: absolute;
+    text-align: center;
+    margin-top: -12.5% !important;
+    color: #c2c1c1ec;   
+    transform: scale(1, .9);
+
+}
+
+.link-sign-up a{
+    color: #f79d89be;
+    margin-left: 3px;
+}
+
