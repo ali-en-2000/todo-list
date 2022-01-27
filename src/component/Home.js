@@ -26,9 +26,7 @@ function Home() {
   const closeDrawer = () => {
     setIsVisible(false);
 
-    var styles = {
-      color:"red"
-    }
+
   };
   function onChange(date, dateString) {
     console.log(date, dateString);
