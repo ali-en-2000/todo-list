@@ -6,26 +6,28 @@ import addTodo from '../img/icons8-plus-+-150.png';
 import filter from '../img/icons8-funnel-100.png';
 import gallery from '../img/icons8-gallery-49.png';
 import { Row, Col, Button, Input, Mentions  } from 'antd';
-// import {Form, Input, Button, Image} from 'antd'
 import { useState } from 'react';
 import { Drawer  } from 'antd';
 import 'antd/dist/antd.css';
 import { DatePicker, Space } from 'antd';
-
 import { Upload, message } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 
 
 function Home() {
-  const [isVisible, setIsVisible] = useState(false);
 
+  
+  const [isVisible, setIsVisible] = useState(false);
+  const drawer={
+    border:'1px solid blue'
+  }
   const showDrawer = () => {
-    setIsVisible(true);}
+    setIsVisible(true);
+   }
 
 
   const closeDrawer = () => {
-    setIsVisible(false);
-
+    setIsVisible(false)
 
   };
   function onChange(date, dateString) {
@@ -50,14 +52,15 @@ function Home() {
       }
     },
   };
+
+  function saveTodo(){
+    alert('hi')
+  }
   return (
     <div className='main'>
       <Row className='header'>
         <Col span={9} offset={1}><p > TO DO LIST</p></Col>
         <Col span={2} offset={11} className='gear'><img src={gear} alt=''></img></Col>
-      <div className='header'>
-
-      </div>
       </Row>
       <Row  className='navListOfTodo'>
         <Col span={3} offset={1} className='logoTodo'>
@@ -69,9 +72,7 @@ function Home() {
         <Col span={2} offset={7} className='filterLogo'>
           <img src={filter} alt=''></img>
         </Col>
-
-      </Row>
-      
+      </Row>      
       <div  className='newTodo'>
         <div className='newTodo-btn'onClick={showDrawer}>
           <img src={addTodo} alt='' ></img>
@@ -80,9 +81,8 @@ function Home() {
         visible={isVisible}
         onClose={closeDrawer}
         placement="bottom"
-        
-        >
-          
+        style={drawer}        
+        >         
           <hr/>
           <Input className='input-newTodo' placeholder='Title'></Input>  
           <Mentions  className='description' placeholder='Desciption'></Mentions>  
@@ -91,18 +91,14 @@ function Home() {
             placeholder={"Deadline (Optional)"}
             />
           </Space>
-
           <Upload  {...props} className='upload'>
-            <Button icon={<UploadOutlined />} className='uploadbtn'>
-              <p>Add Image (Optional)</p>
+          <Button icon={<UploadOutlined />} className='uploadbtn'>
+            <p>Add Image (Optional)</p>
             <img src={gallery} alt="/" className="gallery"></img>
-            </Button>
+          </Button>
           </Upload>
-
-
-
-          <Button className='add-todo-btn'>ADD TODO</Button>
-      </Drawer>
+          <Button className='add-todo-btn'onClick={saveTodo}>ADD TODO</Button>
+        </Drawer>
       </div>
 
     </div>
