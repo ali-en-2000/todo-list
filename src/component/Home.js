@@ -1,66 +1,75 @@
 import React from 'react';
 import "../style/home.css";
-import gear from '../img/icons8-gear-128.png';
+import gear from '../img/Gear.png';
 import todo from '../img/todoLogo.png';
 import addTodo from '../img/icons8-plus-+-150.png';
 import filter from '../img/icons8-funnel-100.png';
-import gallery from '../img/icons8-gallery-49.png';
-import { Row, Col, Button, Input, Mentions  } from 'antd';
+// import gallery from '../img/icons8-gallery-49.png';
+import calendar from '../img/calendar.png';
+import { Row, Col, Button, Input} from 'antd';
 import { useState } from 'react';
 import { Drawer  } from 'antd';
 import 'antd/dist/antd.css';
-import { DatePicker, Space } from 'antd';
-import { Upload, message } from 'antd';
-import { UploadOutlined } from '@ant-design/icons';
-
+import { Space } from 'antd';
+// import { Upload, message } from 'antd';
+// import { UploadOutlined } from '@ant-design/icons';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import TodoList from "../component/TodoList";
+const{TextArea }=Input;
 
 function Home() {
-
-  
+  const [style, setStyle] = useState("cont"); 
   const [isVisible, setIsVisible] = useState(false);
-  const drawer={
-    border:'1px solid blue'
-  }
+
   const showDrawer = () => {
     setIsVisible(true);
+    setStyle("cont2");
    }
-
-
   const closeDrawer = () => {
     setIsVisible(false)
-
-  };
-  function onChange(date, dateString) {
-    console.log(date, dateString);
+    setStyle("cont");
   }
 
-
-  const props = {
-    name: 'file',
-    action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
-    headers: {
-      authorization: 'authorization-text',
-    },
-    onChange(info) {
-      if (info.file.status !== 'uploading') {
-        console.log(info.file, info.fileList);
-      }
-      if (info.file.status === 'done') {
-        message.success(`${info.file.name} file uploaded successfully`);
-      } else if (info.file.status === 'error') {
-        message.error(`${info.file.name} file upload failed.`);
-      }
-    },
-  };
-
+const [title, setName] = useState('');
+const [description, setDescription] = useState('');
+const [date, setStartDate] = useState(new Date());
+const [image, setImage] = useState('');
+let users = JSON.parse( localStorage.getItem('user') || "[]" );
+var user={
+  Title:title, 
+  Description:description, 
+  Date:date, 
+  Image:image
+}
   function saveTodo(){
-    alert('hi')
+    if(document.querySelector('input').defaultValue === '' && 
+    document.querySelector('TextArea').defaultValue === ''){
+      closeDrawer();
+    }else{
+      users.push(user);
+      localStorage.setItem('user',JSON.stringify(users));
+      closeDrawer();
+      clearFild();
+    }
+}
+  
+  const clearFild=()=>{
+    setName('');
+    setDescription('');
+    setImage('');
+    document.querySelector('input').defaultValue = '';
+    document.querySelector('TextArea').defaultValue = '';
+    document.querySelector('input').defaultValue = '';
+
   }
+
+
   return (
     <div className='main'>
       <Row className='header'>
         <Col span={9} offset={1}><p > TO DO LIST</p></Col>
-        <Col span={2} offset={11} className='gear'><img src={gear} alt=''></img></Col>
+        <Col span={2} offset={11} className='gear'><img src={gear} className={style} alt=''></img></Col>
       </Row>
       <Row  className='navListOfTodo'>
         <Col span={3} offset={1} className='logoTodo'>
@@ -70,10 +79,14 @@ function Home() {
           <p>LIST OF TODO</p>
         </Col>
         <Col span={2} offset={7} className='filterLogo'>
-          <img src={filter} alt=''></img>
-        </Col>
-      </Row>      
-      <div  className='newTodo'>
+          <img src={filter} alt='' className={style}></img>
+        </Col>       
+      </Row>
+      <Row>
+        <TodoList/>
+      </Row>
+
+      <div  className={style}>
         <div className='newTodo-btn'onClick={showDrawer}>
           <img src={addTodo} alt='' ></img>
         </div>
@@ -81,22 +94,31 @@ function Home() {
         visible={isVisible}
         onClose={closeDrawer}
         placement="bottom"
-        style={drawer}        
-        >         
-          <hr/>
-          <Input className='input-newTodo' placeholder='Title'></Input>  
-          <Mentions  className='description' placeholder='Desciption'></Mentions>  
-          <Space direction="vertical" >
-            <DatePicker onChange={onChange}
-            placeholder={"Deadline (Optional)"}
+        >        
+        <hr/>
+          <Input  className='input-newTodo' placeholder='Title' value={title} onChange={(e) => setName(e.target.value)}></Input>  
+          <TextArea className='description' placeholder='Desciption' value={description} onChange={(e) => setDescription(e.target.value)}></TextArea>  
+          <Space direction="vertical" className='div-datapicker' >
+             <DatePicker 
+            className='datepicker'
+            value={date} 
+            onChange={(date) => setStartDate(date)}
+            placeholderText="Deadline (Optional)"
+            dateFormat="LLL"
+            
+
             />
+            <img src={calendar} alt=''></img>
           </Space>
-          <Upload  {...props} className='upload'>
-          <Button icon={<UploadOutlined />} className='uploadbtn'>
-            <p>Add Image (Optional)</p>
-            <img src={gallery} alt="/" className="gallery"></img>
-          </Button>
-          </Upload>
+
+          <input 
+            className="add-img" 
+            onChange={(e) => setImage(e.target.value)}
+            type="file" 
+
+            value={image}/>
+            {/* <img src={gallery} alt="/" className="gallery"></img> */}
+
           <Button className='add-todo-btn'onClick={saveTodo}>ADD TODO</Button>
         </Drawer>
       </div>

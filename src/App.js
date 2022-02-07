@@ -7,6 +7,7 @@ import Signup from "./component/SignUp";
 import Log from './component/Login';
 import ForgetPas from "./component/ForgetPas";
 import Home from "./component/Home";
+import Dtails from './component/Dtails';
 
 
 
@@ -29,6 +30,7 @@ function App() {
                     <Route path={"/Home"}   element={<Home/>}/>
                     <Route path={"/SignUp"}   element={<Signup/>}/>
                     <Route path={"/Forgetpas"}   element={<ForgetPas/>}/>
+                    <Route path={"/Dtails"}   element={<Dtails/>}/>
                 </Routes>
             </Router>
         </div>

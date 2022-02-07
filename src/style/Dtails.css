@@ -1,0 +1,14 @@
+.div-dtails{
+    width: 390px !important;
+    height: 844px !important;
+    margin: auto;    
+    border: 1px solid rgb(0, 195, 255);
+  
+}
+.div-dtails h1{
+    height: 200px ;
+    width: 200px;
+    border: 1px solid red;
+    margin: 30% auto;
+    color: black;
+}

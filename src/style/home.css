@@ -15,6 +15,7 @@
     width: 390px !important;
     height: 844px !important;
     margin: auto;    
+    border: 1px solid rgb(0, 195, 255);
   
 }
 .header{
@@ -25,6 +26,10 @@
 .gear img{
     width: 25px;
     padding: 7px 0 0 0;
+    cursor: pointer;
+    top:5px;
+    right:20%
+    
 }
 
 .header p{
@@ -37,7 +42,7 @@
 }
 .navListOfTodo{
     height: 60px;
-    margin-top: 5px;
+    margin-top: 15px;
  }
 .logoTodo img{
     margin-top: 10px;
@@ -51,9 +56,13 @@
     letter-spacing: 1px;
 }
 .filterLogo img{
-    margin-top: 18px;
+    top: 20px !important;
     width: 21px;
+    cursor: pointer;
+    margin-right: -70%;
 }
+
+
 
 .newTodo-btn img{
     width: 63px;
@@ -64,6 +73,23 @@
     position: absolute;
     bottom: 22px;
     right: 30px;
+    cursor: pointer;
+    z-index: 10001 !important;
+}
+.cont{
+    position: absolute;
+    bottom: 22px;
+    right: 30px;
+    cursor: pointer;
+    z-index: 10001 !important;
+}
+.cont2{
+    position: absolute;
+    bottom: 22px;
+    right: 30px;
+    cursor: pointer;
+    z-index: 1000 !important;
+    
 }
 /* //////////////////////////////////////////////////////////////// */
 .ant-drawer-header {
@@ -130,12 +156,17 @@ hr{
 .description{
     width: 320px ;
     top: 15px;
-    height: 420px;
+    height: 420px !important;
     background-color: #F79E89;
     border: 3px solid rgba(243, 243, 243, 0.603);
     border-radius: 10px;
     font-family: "montsratt";
     font-size: 17px;
+    color: rgb(216, 215, 215);
+
+}
+.description::placeholder{
+    color: rgb(216, 215, 215);
 }
 .description:hover{
     border: 3px solid rgba(243, 243, 243, 0.603);
@@ -151,10 +182,11 @@ hr{
  }
 
 
-.ant-picker:hover{
+/* .ant-picker:hover{
     border: 3px solid rgba(243, 243, 243, 0.603);
 
 }
+
 .ant-picker{
     border: 3px solid rgba(243, 243, 243, 0.603);
     width: 320px ;
@@ -176,10 +208,47 @@ hr{
 
 .ant-picker-suffix span{
     color: rgba(243, 243, 243, 0.603) !important;
+} */
+.div-datapicker{
+    position: relative;
+    height: 48px !important;
+    top: 30px !important;
+    width: 320px;
+    height: 48px;
+    border: 3px solid rgba(243, 243, 243, 0.603);
+    border-radius: 10px;
+    font-family: "montsratt";
+    letter-spacing: .8px;
+    font-size: 17px;
+    color: rgba(243, 243, 243, 0.603) !important;
+
+} 
+.div-datapicker img{
+    margin-top: -80px !important;
+    margin-left: 280px;
+    width:20px;
+    border-color: rgb(58, 15, 216) !important;
+
+}
+.datepicker{
+     width:280px ;
+    border: none;
+    height: 32px;
+    margin-top: 5px !important;
+    right: 10px;
+    background-color: #F79E89 !important;
+
+
+}
+.datepicker::placeholder{
+    color:rgb(223, 223, 223);
+    border-color: rgb(58, 15, 216) !important;
+
 }
 
 
-.upload .ant-btn{
+
+.add-img{
     background-color: #F79E89;
     border: 3px solid rgba(243, 243, 243, 0.603);   
     color: rgba(243, 243, 243, 0.603);
@@ -193,6 +262,22 @@ hr{
     align-items: center;
     justify-content: space-between;    
 }
+
+
+/* .upload .ant-btn{
+    background-color: #F79E89;
+    border: 3px solid rgba(243, 243, 243, 0.603);   
+    color: rgba(243, 243, 243, 0.603);
+    width: 320px ;
+    height: 48px;
+    border-radius: 10px;
+    font-family: "montsratt";
+    margin-top: 45px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;    
+} */
 
 .upload .ant-btn p{
     margin-left: -100px;
@@ -208,7 +293,7 @@ hr{
     letter-spacing: .5px;
     background-color: rgb(231, 231, 231) !important;
     color: #f79d89e5 !important;
-    margin-top: 14px ;
+    margin-top: 34px ;
     text-align: center;
 }
 .add-todo-btn:hover{
