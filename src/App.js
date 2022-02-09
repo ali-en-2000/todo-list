@@ -14,7 +14,7 @@ import Dtails from './component/Dtails';
 
 function App() {
     return ( 
-        <div>
+        <>
             <div className="General" >
                 <p span={3} offset={1}>08:34</p>
                 <div className="power">
@@ -33,7 +33,7 @@ function App() {
                     <Route path={"/Dtails"}   element={<Dtails/>}/>
                 </Routes>
             </Router>
-        </div>
+        </>
      );
      
 }

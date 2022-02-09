@@ -1,14 +1,79 @@
-.div-dtails{
+@font-face {
+    font-family: "babes";
+    font-style: normal; 
+    font-weight: normal;
+    src: url("../font/Bebas\ Neue\ Pro\ Bold.otf") format("truetype");
+}
+@font-face {
+    font-family: "montsratt";
+    font-style: normal; 
+    font-weight: normal;
+    src: url("../font/Montserrat-VariableFont_wght.ttf") format("truetype");
+}
+
+.main-div-detail-page{
     width: 390px !important;
     height: 844px !important;
-    margin: auto;    
-    border: 1px solid rgb(0, 195, 255);
-  
+    margin:0 auto;    
+    background-color: rgba(248, 248, 248, 0.884);
+    border: 1px solid rgb(255, 255, 255);
+    position: relative;
 }
-.div-dtails h1{
-    height: 200px ;
-    width: 200px;
-    border: 1px solid red;
-    margin: 30% auto;
-    color: black;
+.head-div{
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 6%;
+    margin-top: 45px;
+
+}
+
+.head-div img{
+    width: 35px;
+    padding: 0 5px;
+    cursor: pointer;
+}
+.content{
+    margin-top: 13px;
+
+}
+.Title-Todo-div{
+    width: 100%;
+    padding: 0 9%;
+    font-size: 25px;
+    font-family: "babes";
+}
+.description-Todo-div{
+    width: 100%;
+    padding: 0 6%;
+    padding-top: 30px;
+    font-family: 'montsratt';
+    font-weight: 500;
+    font-weight: bold;
+    line-height: 24px;
+    font-size: 15px;
+
+}
+.imag-Todo-div{
+    width: 100%;
+    /* border: 1px solid red; */
+    padding: 0 6%;
+    margin-top: 25px;
+
+}
+.date-Todo-div{
+    position: absolute;
+    content: 'Created at';
+    padding: 0 6%;
+    width: 90%;
+    margin-top:760px;
+    z-index: 1000;
+
+}
+.date-Todo-div::before{
+    content: 'Created at';
+    padding-right: 5px;
+    margin-left: 40px;
+    letter-spacing: .5px;
 }

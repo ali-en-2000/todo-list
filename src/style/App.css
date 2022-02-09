@@ -7,9 +7,10 @@
     color: rgba(53, 53, 53, 0.774);
     margin: 0 auto;
     padding: 0 3vh;
-    padding-top: 2%;
+    padding-top: 1%;
     left: 50%;
     transform: translateX(-50%);
+    z-index: 1;
 }
 .power{
     display: flex;

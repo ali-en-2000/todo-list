@@ -4,7 +4,7 @@ import gear from '../img/Gear.png';
 import todo from '../img/todoLogo.png';
 import addTodo from '../img/icons8-plus-+-150.png';
 import filter from '../img/icons8-funnel-100.png';
-// import gallery from '../img/icons8-gallery-49.png';
+import gallery from '../img/icons8-gallery-49.png';
 import calendar from '../img/calendar.png';
 import { Row, Col, Button, Input} from 'antd';
 import { useState } from 'react';
@@ -19,6 +19,7 @@ import TodoList from "../component/TodoList";
 const{TextArea }=Input;
 
 function Home() {
+  
   const [style, setStyle] = useState("cont"); 
   const [isVisible, setIsVisible] = useState(false);
 
@@ -104,20 +105,23 @@ var user={
             value={date} 
             onChange={(date) => setStartDate(date)}
             placeholderText="Deadline (Optional)"
-            dateFormat="LLL"
+            dateFormat="dd MMM yyyy"
+                      
             
 
             />
             <img src={calendar} alt=''></img>
           </Space>
-
+<button className='add-img-btn'>
           <input 
             className="add-img" 
             onChange={(e) => setImage(e.target.value)}
             type="file" 
-
+            data-buttonText="Your label here."
             value={image}/>
-            {/* <img src={gallery} alt="/" className="gallery"></img> */}
+            <img src={gallery} alt="/" className="gallery"></img>
+
+</button>
 
           <Button className='add-todo-btn'onClick={saveTodo}>ADD TODO</Button>
         </Drawer>

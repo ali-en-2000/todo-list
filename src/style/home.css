@@ -231,7 +231,7 @@ hr{
 
 }
 .datepicker{
-     width:280px ;
+    width:280px ;
     border: none;
     height: 32px;
     margin-top: 5px !important;
@@ -248,42 +248,42 @@ hr{
 
 
 
-.add-img{
-    background-color: #F79E89;
-    border: 3px solid rgba(243, 243, 243, 0.603);   
-    color: rgba(243, 243, 243, 0.603);
+.add-img{ 
     width: 320px ;
     height: 48px;
     border-radius: 10px;
-    font-family: "montsratt";
-    margin-top: 45px;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
+    margin-left: -10px;
     justify-content: space-between;    
+    opacity: 0;
+    cursor: pointer;
 }
-
-
-/* .upload .ant-btn{
-    background-color: #F79E89;
-    border: 3px solid rgba(243, 243, 243, 0.603);   
-    color: rgba(243, 243, 243, 0.603);
+.add-img-btn{
+    position: relative;
     width: 320px ;
     height: 48px;
-    border-radius: 10px;
-    font-family: "montsratt";
     margin-top: 45px;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;    
-} */
+    border-radius: 10px;
+    border: 3px solid rgba(243, 243, 243, 0.603);   
+    background-color: #F79E89;
 
-.upload .ant-btn p{
-    margin-left: -100px;
 }
+.add-img-btn::after{
+    content: 'Add Image (Optional)';
+    position: relative;
+    top: -40px;
+    left: -67px;
+    color: rgba(243, 243, 243, 0.603);
+    font-family: "montsratt";
+    font-size: 16px;
+
+}
+
 .gallery{
     width: 20px;
+    position: absolute;
+    right: 13px;
+    bottom:  10px;
+
 }
 .add-todo-btn{
     width: 320px ;
@@ -293,7 +293,7 @@ hr{
     letter-spacing: .5px;
     background-color: rgb(231, 231, 231) !important;
     color: #f79d89e5 !important;
-    margin-top: 34px ;
+    margin-top: 20px ;
     text-align: center;
 }
 .add-todo-btn:hover{

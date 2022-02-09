@@ -37,7 +37,6 @@
     color: rgb(215, 217, 219);
     display: flex;
     justify-content: space-between;
-    border: 1px solid red;
 }
 .Clock-logo{
     width: 18px;
