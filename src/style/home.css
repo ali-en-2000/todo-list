@@ -94,6 +94,7 @@
 /* //////////////////////////////////////////////////////////////// */
 .ant-drawer-header {
     display: none;
+    background-color: rgba(87, 243, 49, 0.829);
 }
 
 .ant-drawer{
@@ -182,7 +183,7 @@ hr{
  }
 
 
-/* .ant-picker:hover{
+ .ant-picker:hover{
     border: 3px solid rgba(243, 243, 243, 0.603);
 
 }
@@ -204,49 +205,15 @@ hr{
     font-size: 17px;
     color: rgba(243, 243, 243, 0.603) !important;
 }
+.ant-picker-input input{
+font-size: 16.5px;
+font-family: "montsratt";
 
+}
 
 .ant-picker-suffix span{
     color: rgba(243, 243, 243, 0.603) !important;
-} */
-.div-datapicker{
-    position: relative;
-    height: 48px !important;
-    top: 30px !important;
-    width: 320px;
-    height: 48px;
-    border: 3px solid rgba(243, 243, 243, 0.603);
-    border-radius: 10px;
-    font-family: "montsratt";
-    letter-spacing: .8px;
-    font-size: 17px;
-    color: rgba(243, 243, 243, 0.603) !important;
-
 } 
-.div-datapicker img{
-    margin-top: -80px !important;
-    margin-left: 280px;
-    width:20px;
-    border-color: rgb(58, 15, 216) !important;
-
-}
-.datepicker{
-    width:280px ;
-    border: none;
-    height: 32px;
-    margin-top: 5px !important;
-    right: 10px;
-    background-color: #F79E89 !important;
-
-
-}
-.datepicker::placeholder{
-    color:rgb(223, 223, 223);
-    border-color: rgb(58, 15, 216) !important;
-
-}
-
-
 
 .add-img{ 
     width: 320px ;

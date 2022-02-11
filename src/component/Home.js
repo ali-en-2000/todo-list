@@ -5,21 +5,26 @@ import todo from '../img/todoLogo.png';
 import addTodo from '../img/icons8-plus-+-150.png';
 import filter from '../img/icons8-funnel-100.png';
 import gallery from '../img/icons8-gallery-49.png';
-import calendar from '../img/calendar.png';
 import { Row, Col, Button, Input} from 'antd';
 import { useState } from 'react';
 import { Drawer  } from 'antd';
 import 'antd/dist/antd.css';
-import { Space } from 'antd';
+// import { Space } from 'antd';
 // import { Upload, message } from 'antd';
 // import { UploadOutlined } from '@ant-design/icons';
-import DatePicker from "react-datepicker";
+// import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import TodoList from "../component/TodoList";
+
+import { DatePicker,Space } from 'antd';
+import "antd/dist/antd.css"
 const{TextArea }=Input;
 
+
+
+
+
 function Home() {
-  
   const [style, setStyle] = useState("cont"); 
   const [isVisible, setIsVisible] = useState(false);
 
@@ -44,6 +49,7 @@ var user={
   Image:image
 }
   function saveTodo(){
+    window.location.reload();
     if(document.querySelector('input').defaultValue === '' && 
     document.querySelector('TextArea').defaultValue === ''){
       closeDrawer();
@@ -84,7 +90,7 @@ var user={
         </Col>       
       </Row>
       <Row>
-        <TodoList/>
+        <TodoList />
       </Row>
 
       <div  className={style}>
@@ -100,28 +106,21 @@ var user={
           <Input  className='input-newTodo' placeholder='Title' value={title} onChange={(e) => setName(e.target.value)}></Input>  
           <TextArea className='description' placeholder='Desciption' value={description} onChange={(e) => setDescription(e.target.value)}></TextArea>  
           <Space direction="vertical" className='div-datapicker' >
-             <DatePicker 
-            className='datepicker'
-            value={date} 
-            onChange={(date) => setStartDate(date)}
-            placeholderText="Deadline (Optional)"
-            dateFormat="dd MMM yyyy"
-                      
-            
-
-            />
-            <img src={calendar} alt=''></img>
+            <DatePicker 
+            onChange={(Date) => setStartDate(Date)} 
+            placeholder='Deadline (optional)' 
+            format='DD MMMM yyyy' />
           </Space>
-<button className='add-img-btn'>
-          <input 
-            className="add-img" 
-            onChange={(e) => setImage(e.target.value)}
-            type="file" 
-            data-buttonText="Your label here."
-            value={image}/>
-            <img src={gallery} alt="/" className="gallery"></img>
 
-</button>
+          <button className='add-img-btn'>
+            <input 
+              className="add-img" 
+              onChange={(e) => setImage(e.target.value)}
+              type="file" 
+              value={image}/>
+              <img src={gallery} alt="/" className="gallery"></img>
+
+          </button>
 
           <Button className='add-todo-btn'onClick={saveTodo}>ADD TODO</Button>
         </Drawer>
