@@ -1,0 +1,70 @@
+@font-face {
+    font-family: "babes";
+    font-style: normal; 
+    font-weight: normal;
+    src: url("../font/Bebas\ Neue\ Pro\ Bold.otf") format("truetype");
+}
+@font-face {
+    font-family: "montsratt";
+    font-style: normal; 
+    font-weight: normal;
+    src: url("../font/Montserrat-VariableFont_wght.ttf") format("truetype");
+}
+.main-div-LogOutComponent{
+    position: relative;
+    width: 390px !important;
+    height: 844px !important;
+    margin: auto;    
+    border: 1px solid rgb(0, 195, 255);
+  }
+.main-div-LogOutComponent .head{
+    display: flex;
+    justify-content: space-between;
+    padding:0 6%;
+    margin-top: 10%;
+    align-items: center;
+    color: #F79E89;
+    font-family: 'babes';
+    font-size: 25px;
+    letter-spacing: 1px;    
+}
+.main-div-LogOutComponent .head p{
+    margin: 0;
+
+}
+.rafiki{
+    margin:30%  7.9% 32% 7.9%  !important;
+}
+.fullName,
+.Email,
+.Password{
+    display: flex;
+    justify-content: space-between;
+    padding:5px 7%;
+    margin-top: -5px;
+    font-family: 'montsratt';
+    font-size: 15px;
+    color: rgba(65, 65, 65, 0.589);
+}
+.fullName p:nth-child(2),
+.Email p:nth-child(2),
+.Password p:nth-child(2){
+    color: #F79E89;
+}
+.fullName p:nth-child(2){
+    font-weight: bolder;
+}
+.logout{
+    width: 88% ;
+    height: 50px;
+    margin: 6%  6% 0 6%;
+    border: none;
+    border-radius: 10px;
+    background-color: #f79d89e8;
+    color: aliceblue;
+    font-size: 15px;
+    letter-spacing: 1px;    
+    font-family: 'montsratt';
+    cursor: pointer;
+
+}

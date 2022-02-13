@@ -8,7 +8,7 @@ import Log from './component/Login';
 import ForgetPas from "./component/ForgetPas";
 import Home from "./component/Home";
 import Dtails from './component/Dtails';
-
+import LogOut from "./component/LogOut";
 
 
 
@@ -31,6 +31,7 @@ function App() {
                     <Route path={"/SignUp"}   element={<Signup/>}/>
                     <Route path={"/Forgetpas"}   element={<ForgetPas/>}/>
                     <Route path={"/Dtails"}   element={<Dtails/>}/>
+                    <Route path={"/LogOut"}   element={<LogOut/>}/>
                 </Routes>
             </Router>
         </>
