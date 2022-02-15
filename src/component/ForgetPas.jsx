@@ -1,18 +1,27 @@
 import React from 'react';
-import '../style/forgetPassword.css';
-import logo from '../img/1.png';
-import arrow from '../img/left.png';
-import "antd/dist/antd.css";
-import {Form, Input, Button} from 'antd';
+import { useCookies } from 'react-cookie';
+import { useState } from 'react';
+
+//  Related to ant design
+import { Form, Input, Button } from 'antd';
 import EyeTwoTone from '@ant-design/icons/EyeTwoTone';
 import EyeInvisibleOutlined from '@ant-design/icons/EyeInvisibleOutlined';
-import {useNavigate} from "react-router-dom"
-import { useCookies } from 'react-cookie';
-import  { useState } from 'react';
+
+//  Import style
+import "antd/dist/antd.css";
+import '../style/forgetPassword.css';
+
+//   Import picture
+import arrow from '../img/left.png';
 
 
-function ForgetP() {
-  const navigate=useNavigate()
+function ForgetPas({setStatus,status}) {
+
+  // for handel input incorrect error
+  const[checkPw,setCheckPw]=useState('input-value pw')
+  const[checkCpw,setCheckCpw]=useState('input-value cpw')
+
+  // for save new password
   const [ConfirmPassword, setConfirmPasswrod] = useState('');
   const [password, setPassword] = useState('');
   const [cookies,setCookie] = useCookies(['user']);
@@ -20,53 +29,62 @@ function ForgetP() {
 
   const handle = () => {
   if(password===ConfirmPassword && password!==''){
-    const a =cookies.Password;
-    cookies.Password=a;
-    //tow line above is just for fix error 
+    //    seve new password
     setCookie('Password', password, { path: '/', maxAge:'3600'});
-    window.location.replace("/");
-  }else{
-    alert('password and confirm pass is not match!! or your fild is empty')
-  } 
+    setStatus('SIGN IN')  
+  }
+
+  //     If the input values ​​are not correct
+  if(password!==ConfirmPassword){
+    setCheckPw('input-value pw-error')
+    setCheckCpw('input-value cpw-error')
+  }
+  if(ConfirmPassword===''){
+    
+    setCheckCpw('input-value cpw-error')
+  }
+  if(password===''){
+    setCheckPw('input-value pw-error')
+  }
+
   };
 
   return (
-  <div className="icon"  >  
-    <img className='todo-image' src={logo} alt="#"  ></img>
-    <img className='arrow-image' src={arrow} alt="#" onClick={()=>{navigate("/")}} ></img>
+    <div >  
+      <img className='arrow-image' src={arrow} alt="#" onClick={()=>setStatus('SIGN IN')} ></img>
 
-    <Form className='login-form'>
+      <Form className='psw-div'>
 
-      <Input.Password 
-        placeholder="Password"
-        className='input-value iv'
-        id='placeholder-1'
-        iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
-        style={{fontSize:"23px"}}
-        size='large' 
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <Input.Password 
-        placeholder="Confirm Password"
-        className='input-value'
-        id='placeholder-2'
-        iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
-        style={{fontSize:"23px"}}
-        size='large' 
-        value={ConfirmPassword}
-        onChange={(e) => setConfirmPasswrod(e.target.value)}
-      />
+        <Input.Password 
+          placeholder="Password"
+          className={checkPw}
+          id='placeholder_NewPassword'
+          iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
+          style={{fontSize:"23px"}}
+          size='large' 
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+        <Input.Password 
+          placeholder="Confirm Password"
+          className={checkCpw}
+          id='placeholder_ConfirmNewPassword'
+          iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
+          style={{fontSize:"23px"}}
+          size='large' 
+          value={ConfirmPassword}
+          onChange={(e) => setConfirmPasswrod(e.target.value)}
+          required
+        />
 
-    <Form.Item>
-      <Button block type='primary'className='changePassword-btn' htmlType='submit' onClick={handle} >CHANGE PASSWORD</Button>
-    </Form.Item>  
+      <Form.Item>
+        <Button block type='primary'className='validation_button changePass' htmlType='submit' onClick={()=>handle()} >{status}</Button>
+      </Form.Item>  
 
-    </Form>
-  </div>
-);
-
-
+      </Form>
+    </div>
+  );
 }
 
-export default  ForgetP;
+export default  ForgetPas;

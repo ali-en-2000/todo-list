@@ -1,75 +1,95 @@
 import React from 'react';
-import '../style/login.css';
-import "antd/dist/antd.css";
-import {Form, Input} from 'antd';
-import { Button} from 'antd';
-import EyeTwoTone from '@ant-design/icons/EyeTwoTone';
-import EyeInvisibleOutlined from '@ant-design/icons/EyeInvisibleOutlined';
-import {useNavigate} from "react-router-dom"
-import logo from '../img/1.png'
-import "antd/dist/antd.css"
+import { useNavigate } from "react-router-dom"
 import { useCookies } from 'react-cookie';
 import { useState } from 'react';
 
+//  Related to ant design
+import { Form, Input, Button } from 'antd';
+import EyeTwoTone from '@ant-design/icons/EyeTwoTone';
+import EyeInvisibleOutlined from '@ant-design/icons/EyeInvisibleOutlined';
 
-function Log() {
+//   import style
+import '../style/login.css';
+import "antd/dist/antd.css";
+
+
+function LogIn({setStatus,status}) {
+
+  // for handel input incorrect error
+  const[checkEmail,setCheckEmail]=useState('input-value checkEmail')
+  const[checkPassword,setCheckPassword]=useState('input-value checkPassword')
+
+  // for get email, password
   const navigate=useNavigate()
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [cookies, setcookie] = useCookies(['user']);
 
   const handle = () => {
-  if(password===cookies.Password && email===cookies.emial){
-     navigate("/home")  }
-  else(
-     alert("retry.!!!")
-  )};
+    //  check email and password
+    if(password===cookies.Password && email===cookies.emial){
+     navigate("/home")  
+    }
+
+    //     If the input values ​​are not correct, Run the following styles
+    if(email===''){
+      setCheckEmail('input-value checkEmail_error')
+    }
+    if(password===''){
+      setCheckPassword('input-value checkPassword_error')
+    }
+    if(password!==email && password!==cookies.Password && email!==cookies.emial){
+      setCheckEmail('input-value checkEmail_error')
+      setCheckPassword('input-value checkPassword_error')
+    }
+  };
 
    return (
-    <div className="icon"  > 
-        <img className='todo-image' src={logo} alt="#"  ></img>
+    <div> 
 
-        <Form className='login-form' style={{marginBottom:"50px"}}>
-
-          <Form.Item  name="email" >
+        <Form className='login-form' >
+          <Form.Item  
+            name="email">
             <Input
-            placeholder='Email' 
-            id='placeholder0' 
-            className='input-value'
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+              placeholder='Email' 
+              id='placeholder_email' 
+              className={checkEmail}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
             ></Input>
           </Form.Item>
 
           <Input.Password 
             placeholder="Password"
-            className='input-value'
-            id='placeholder1'
+            className={checkPassword}
+            id='placeholder_password'
             iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
             style={{fontSize:"23px"}}
             size='large'           
             onChange={(e) => setPassword(e.target.value)}
             value={password}
+            required
           />
           <Form.Item>          
-
-            <a className="login-form-forgot" href="/ForgetPas" onClick={()=>{navigate("/ForgetPas")}} >
+            <span className="forgetPass_link" onClick={()=>setStatus('CHANGE PASSWORD')} >
               Forgot Password?
-            </a>
+            </span>
           </Form.Item>
           <Form.Item>
             <Button block 
               type='primary'
-              className='sign-in-btn' 
+              className='validation_button SINGIN' 
               htmlType='submit' 
-              onClick={handle } >SIGN IN</Button>
+              onClick={handle } >{status}
+            </Button>
           </Form.Item>  
           <Form.Item style={{marginTop:"-10px"}}>
-            <span className='link-sign-up'>
+            <span className='sinUp_link'>
               Don't have an account? 
-              <a className="ali" href="/SignUp" onClick={()=>{navigate("/SignUp")}}>
+              <span onClick={()=>setStatus("SIGN UP")}>
                 Sign up
-              </a>
+              </span>
             </span>
           </Form.Item>     
         </Form>
@@ -79,4 +99,4 @@ function Log() {
 
 }
 
-export default  Log;
+export default  LogIn;

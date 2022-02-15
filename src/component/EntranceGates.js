@@ -14,7 +14,7 @@ import logo from '../img/Union.png'
 
 const EntranceGates = () => {
     // Components key
-    const[status,SetStatus]=useState('SIGN UP')
+    const[status,SetStatus]=useState('SIGN IN')
     return ( 
         <>
             <div className='mainDiv'>

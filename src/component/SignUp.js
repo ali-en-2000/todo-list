@@ -1,15 +1,27 @@
 import React from 'react';
-import '../style/signUp.css';
-import logo from '../img/1.png';
-import "antd/dist/antd.css"
+import { useState } from 'react';
+import { useCookies } from 'react-cookie';
+import { useNavigate } from "react-router-dom"
+
+//  Related to ant design
 import {Form, Input, Button} from 'antd'
 import EyeTwoTone from '@ant-design/icons/EyeTwoTone';
 import EyeInvisibleOutlined from '@ant-design/icons/EyeInvisibleOutlined';
-import { useState } from 'react';
-import { useCookies } from 'react-cookie';
-import {useNavigate} from "react-router-dom"
 
-const Signup = () => {
+//  Import style
+import '../style/signUp.css';
+import "antd/dist/antd.css"
+
+
+const Signup = ({setStatus,status}) => {
+
+    // for handel input incorrect error
+    const[checkEmail,setcheckEmail]=useState('input-value SignUp_Input_emial')
+    const[checkFullName,setcheckFullName]=useState('input-value SignUp_Input_Name')
+    const[checkPassword,setcheckPassword]=useState('input-value SignUp_Input_Password')
+    const[checkConfirmPassword,setcheckConfirmPassword]=useState('input-value SignUp_Input_ConfirmPassword')
+
+    // for save new name, new email, new password
     const navigate=useNavigate()
     const [name, setName] = useState('');
     const [emial, setEmial] = useState('');
@@ -18,86 +30,94 @@ const Signup = () => {
     const [cookies,setCookie] = useCookies(['user']);
     
     const handle = () => {
-        if(pwd===cpwd && pwd!=='' && cpwd!==''){
-            if(name!=='' && emial!==''){
-
-                const a =cookies.Password;
-                cookies.Password=a;
-                //tow line above is just for fix error 
-                setCookie('Name', name, { path: '/', maxAge:'3600'});
-                setCookie('Password', pwd, { path: '/', maxAge:'3600'});
-                setCookie('emial', emial, { path: '/', maxAge:'3600'});
-                window.location.replace("/");
-            }else(alert('fill empty box'))
+        if(pwd===cpwd && pwd!=='' && cpwd!=='' && name!=='' && emial!==''){
+            //save name, email and password in cookies
+            setCookie('Name', name, { path: '/', maxAge:'3600'});
+            setCookie('emial', emial, { path: '/', maxAge:'3600'});
+            setCookie('Password', pwd, { path: '/', maxAge:'3600'});
+            navigate('/home')
         }
-        else(
-        alert("your confitrm pasword is not corect.!!!")
-        )
+
+        //     If the input values ​​are not correct, Run the following styles
+        if(emial===''){
+            setcheckEmail('input-value SignUp_Input_emial_error')
+        }
+        if(name===''){
+            setcheckFullName('input-value SignUp_Input_Name_error')
+        }
+        if(pwd===''){
+            setcheckConfirmPassword('input-value SignUp_Input_Password_error')
+        }
+        if(cpwd===''){
+            setcheckPassword('input-value SignUp_Input_ConfirmPassword_error')
+        }
+        if(pwd!==cpwd){
+            setcheckConfirmPassword('input-value SignUp_Input_Password_error')
+            setcheckPassword('input-value SignUp_Input_ConfirmPassword_error')
+        }
     };
     return ( 
-        <div className="icon"  >      
-        <img className='todo-image' src={logo} alt="#"  ></img>
+        <div>     
 
-        <Form className='signup-form'>
-            <div className='input-tag'>
-            <Form.Item  name="fulName"style={{marginTop:"-8px"}}>
-                    <Input 
-                        placeholder='Full Name' 
-                        className='input-value' 
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        required
-                    ></Input>
-                </Form.Item>
-                <Form.Item  name="email" style={{marginTop:"1px"}} >
+            <Form className='signup-form'>
+                <Form.Item  name="email" >
                     <Input 
                         placeholder='Email' 
-                        className='input-value' 
+                        className={checkEmail} 
                         value={emial}
                         onChange={(e) => setEmial(e.target.value)}
                         required
                     ></Input>                    
                 </Form.Item>
+                
+                <Form.Item  name="fulName">
+                    <Input 
+                        placeholder='Full Name' 
+                        className={checkFullName} 
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        required
+                    ></Input>
+                </Form.Item>
+
                 <Input.Password 
                     placeholder="Password"
-                    id='placeHolder0'
-                    className='input-value'
+                    id='placeHolder_Password'
+                    className={checkPassword}
                     iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
-                    style={{fontSize:"23px",top:"-14px"}}
                     size='large'
                     value={pwd}
                     onChange={(e) => setPwd(e.target.value)} 
+                    required
                 />
                 <Form.Item>   
                 </Form.Item>
                 <Input.Password 
                     placeholder="Confirm Password"
-                    className='input-value'
-                    id='placeHolder1'
+                    className={checkConfirmPassword}
+                    id='placeHolder_ConfirmPassword'
                     iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
-                    style={{fontSize:"23px",top:"-52px" }}
                     size='large' 
                     value={cpwd}
                     onChange={(e) => setCpwd(e.target.value)}
+                    required
                 />
-            </div>
-            <Form.Item>
-            <Button block type='primary'
-                className='sign-UP-btn' 
-                htmlType='submit' 
-                onClick={handle} >SIGN UP
-            </Button>
-            </Form.Item>  
-            <Form.Item>
-            <span className='link-sign-up'>
-                Have an account? 
-                <a href="/" onClick={()=>{navigate("/")}}>
-                Log in
-                </a>
-            </span>
-            </Form.Item>     
-        </Form>
-    </div>
+                <Form.Item>
+                <Button block type='primary'
+                    className='validation_button signUp' 
+                    onClick={handle} >{status}
+                </Button>
+                </Form.Item>  
+                <Form.Item>
+                <span className='login_link'>
+                    Have an account? 
+                    <span onClick={()=>setStatus('SIGN IN')}>
+                    Log in
+                    </span>
+                </span>
+                </Form.Item>     
+            </Form>
+        </div>
      );
 }
  
