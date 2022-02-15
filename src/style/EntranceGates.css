@@ -1,0 +1,31 @@
+@font-face {
+    font-family: "babes";
+    font-style: normal; 
+    font-weight: normal;
+    src: url("../font/Bebas\ Neue\ Pro\ Bold.otf") format("truetype");
+}
+@font-face {
+    font-family: "montsratt";
+    font-style: normal; 
+    font-weight: normal;
+    src: url("../font/Montserrat-VariableFont_wght.ttf") format("truetype");
+}
+.mainDiv{
+    position: relative;
+    width: 375px ;
+    height: 812px !important;
+    margin: auto;
+ }
+.todo-image{
+    position: absolute;
+    width: 187px;
+    height: 180px;
+    left: 94px;
+    top: 180px;
+}
+.inputValidation_Div{
+    position: absolute;
+    bottom: 0;
+    width: 100% ;
+    height: 410px;
+}
