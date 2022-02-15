@@ -1,68 +1,90 @@
-.icon{
-    position: relative;
-    width: 390px !important;
-    height: 844px !important;
-    margin: auto;
-}
-
-
 .signup-form{
     position: absolute;
-    bottom: 1%;
+    bottom: 0;
     width: 86%;
     left: 7%;
-    padding-top: 5px !important;
+    height: 400px;
 }
 
-.input-tag{
-    transform: translateY(40px);
-    height: 300px;
+.SignUp_Input_emial{
+    top: 13px !important;
+}
+.SignUp_Input_Name{
+    top: 4px !important;
+}
+.SignUp_Input_Password{
+    top: -5px !important;
+    font-size:23px
+}
+.SignUp_Input_ConfirmPassword{
+    top: -45px !important;
+    font-size:23px
 }
 
-.input-value{
-    height: 50px !important;
-    border-radius: 10px !important;
-    border-color: #b3b1b1 !important;
-    padding: 0 15px !important;
-    border: 2px solid #b3b1b1cc !important;
-    margin-bottom: 0 !important;
-    
+.SignUp_Input_emial_error{
+    top: 13px !important;
+    border-color: red !important;
+}
+.SignUp_Input_Name_error{
+    top: 4px !important;
+    border-color: red !important;
+}
+.SignUp_Input_ConfirmPassword_error{
+    top: -5px !important;
+    font-size:23px;
+    border-color: red !important;
+}
+.SignUp_Input_Password_error{
+    top: -45px !important;
+    font-size:23px;
+    border-color: red !important;
 }
 
 .input-value::placeholder{
-    font-size: 17px !important;
+    font-size: 18px !important;
     color: #b3b1b1 !important;
 }
-#placeHolder0::placeholder,
-#placeHolder1::placeholder{
+
+#placeHolder_Password::placeholder,
+#placeHolder_ConfirmPassword::placeholder{
     color: #979494cc !important;
     font-size: 18px;
 }
-
-.sign-UP-btn{
-    height:48px !important; 
-    background-color:#F79E89 !important;
-    border:none !important;
-    border-radius:10px !important;
-    top: 12px;
-    padding:10px 0 !important;
-    font-weight:  500 !important;
+.validation_button{
+    font-family: 'montsratt';
+    height:48px ; 
+    background-color:#F79E89 ;
     letter-spacing: 1px;
-    color: rgba(241, 241, 241, 0.897) !important;
+    border:none ;
+    border-radius:10px ;
+    padding:10px 0 ;
+    margin-top: -9px;
+    padding:10px 0 !important;
 }
 
-.link-sign-up{
+.validation_button:hover{
+    background-color:#F79E89 ;
+
+}
+
+
+.signUp{
+    top: -4px;
+}
+
+.login_link{
     width: 100%;
     position: absolute;
     text-align: center;
-    top: 38px !important;
-    color: #c2c1c1ec;   
-    transform: scale(1.1, .9);
-    
+    top: -17px ;
+    color: rgba(39, 39, 39, 0.315);
+       
 }
 
-.link-sign-up a{
+.login_link span{
+    font-size: 13px;
     color: #f79d89be;
     margin-left: 3px;
+    cursor: pointer;
 }
 

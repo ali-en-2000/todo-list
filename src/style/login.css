@@ -1,77 +1,63 @@
-.icon{
-    position: relative;
-    width: 390px !important;
-    height: 844px !important;
-    margin: auto;
-    border: 1px solid red;
- }Y
-.todo-image{
-    position:relative;
-    top: 20% !important;
-    margin-left: 17% ;
-    width: 66% !important;    
-}
-
 .login-form{
-    bottom: 20px !important;
-    position: absolute;
-    height: 300px;
-    width: 86%;
-    left: 7%;
+    margin-bottom: 20px !important;
 }
-
 .input-value{
     height: 48px;
     border-radius: 10px !important;
     padding: 0 15px !important;
-    border: 2px solid #a5a5a5cc !important;
-    top: -10px;
+    border: 1px solid #27272777 !important;
+    top: -8px;
+}
+.checkEmail_error,
+.checkPassword_error{
+    border-color: red !important;
 }
 
-#placeholder0{
+#placeholder_email{
     margin-top: 27px !important;
     margin-bottom: -10px !important;
 }
-#placeholder0::placeholder{
+#placeholder_email::placeholder,
+#placeholder_password::placeholder{
     color: #a5a5a5cc !important;
     font-size: 18px !important;
 } 
-#placeholder1::placeholder{
-    color: #a5a5a5cc;
-    font-size: 18px;
-}
 
-.login-form-forgot{
+.forgetPass_link{
     display: flex;
     justify-content: flex-end;
     color: #b3b1b1;
-    margin-top: 1px;
+    margin-top: 0px;
     font-size: 97%;
+    cursor: pointer;
 }
 
-.sign-in-btn{
-    letter-spacing: 1px;
-    color: #dfdbdbd5;
+.validation_button{
+    height:48px ; 
+    background-color:#F79E89 ;
     font-weight: 500;
-    height:48px !important; 
-    background-color:#F79E89 !important;
-    border:none !important;
-    border-radius:10px !important;
-    margin-top: -15px;
+    letter-spacing: 1px;
+    border:none ;
+    border-radius:10px ;
+    margin-top: -10px;
     padding:10px 0 !important;
 }
 
-.link-sign-up{
+.ant-btn-primary:hover, .ant-btn-primary:focus {
+    background-color: #F79E89 !important;
+}
+.sinUp_link{
     width: 100%;
     position: absolute;
     text-align: center;
-    margin-top: -12.5% !important;
-    color: #c2c1c1ec;   
+    margin-top: -5.5% ;
+    color: rgba(39, 39, 39, 0.315);
     transform: scale(1, .9);
 
 }
 
-.link-sign-up a{
+.sinUp_link span{
+    cursor: pointer;
     color: #f79d89be;
     margin-left: 3px;
 }
