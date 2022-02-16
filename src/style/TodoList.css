@@ -1,8 +1,9 @@
 
 .Todolist{
     width: 90%;
-    height: 600px;
+    height: 580px;
     margin: auto;
     overflow: hidden;
-    margin-top: -10px;
+    margin-top: 0px;
+
 }

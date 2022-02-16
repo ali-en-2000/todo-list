@@ -15,83 +15,66 @@
     width: 390px !important;
     height: 844px !important;
     margin: auto;    
-    border: 1px solid rgb(0, 195, 255);
-  
 }
 .header{
     position: relative;
-    padding-top:50px ;
+    padding-top:45px ;
 }
 
 .gear img{
     width: 25px;
     padding: 7px 0 0 0;
     cursor: pointer;
-    top:5px;
-    right:20%
-    
+    margin-left: 5px;   
 }
 
 .header p{
     font-family: "babes";
-    font-size: 24px;
+    font-size: 24.8px;
     color: #F79E89;
     margin: auto ;
     letter-spacing: 1px;
     transform: scale(1,1);
+    margin-left: 5px;
 }
 .navListOfTodo{
     height: 60px;
     margin-top: 15px;
  }
 .logoTodo img{
-    margin-top: 10px;
-    width: 40px;
-    height: 38px;
+    margin-top: 16px;
+    width: 25px;
+    height: 25px;
+    margin-left: 5px;
+
 }
 .listOfTodo{
     font-size: 36px;
     font-family: "babes";
     color: #f76c6aee;
     letter-spacing: 1px;
+    margin-left: -8px;
 }
 .filterLogo img{
-    top: 20px !important;
-    width: 21px;
+    width: 24px;
     cursor: pointer;
-    margin-right: -70%;
+    margin-top: 19px;
+    margin-left: 15px;
 }
-
-
-
 .newTodo-btn img{
+    position: absolute;
     width: 63px;
-    z-index: 100;
+    bottom: 22px;
+    right: 30px;
+    cursor: pointer;
+}
+.hidden1{
+    display: none;
+}
+.show1{
+    display: inline;
 }
 
-.newTodo{
-    position: absolute;
-    bottom: 22px;
-    right: 30px;
-    cursor: pointer;
-    z-index: 10001 !important;
-}
-.cont{
-    position: absolute;
-    bottom: 22px;
-    right: 30px;
-    cursor: pointer;
-    z-index: 10001 !important;
-}
-.cont2{
-    position: absolute;
-    bottom: 22px;
-    right: 30px;
-    cursor: pointer;
-    z-index: 1000 !important;
-    
-}
-/* //////////////////////////////////////////////////////////////// */
 .ant-drawer-header {
     display: none;
     background-color: rgba(87, 243, 49, 0.829);
@@ -246,11 +229,11 @@ font-family: "montsratt";
 }
 
 .gallery{
-    width: 20px;
+    width: 24px;
     position: absolute;
-    right: 13px;
+    right: 10px;
     bottom:  10px;
-
+    filter: invert(.96);
 }
 .add-todo-btn{
     width: 320px ;
@@ -279,5 +262,33 @@ font-family: "montsratt";
 }
 .ant-input::selection{
     border-color: rgb(231, 231, 231) !important;
+
+}
+
+
+                   /* filter dropdown style */
+
+.ant-dropdown {
+    width :126px !important;
+    height:108px;
+    border-radius: 10px;
+}
+.ant-dropdown-menu{
+    width :126px !important;
+    height:108px;
+    border-radius: 10px;
+    background-color: #f0f0f0;
+    padding-top: 10%;
+
+}
+.ant-dropdown-menu-item{
+    height: 30px;
+    width: 126px;
+    font-family: 'montsratt';
+    font-weight: bolder;
+    letter-spacing: 1px;
+}
+.ant-dropdown-menu-title-content:hover{
+    color: #f79d89e5 ;
 
 }

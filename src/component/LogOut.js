@@ -22,7 +22,7 @@ const LogOut = () => {
         <div className='main-div-LogOutComponent'>
             <div className='head'>
                 <p>TO DO LIST</p>
-                <img src={setting} alt='' onClick={()=>navigate('/home')}></img>
+                <img src={setting} className='setting' alt='' onClick={()=>navigate('/home')}></img>
             </div>
             <img src={rafiki} alt='' className='rafiki'></img>
             <div className='logOut_content'>

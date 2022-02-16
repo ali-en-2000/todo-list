@@ -13,8 +13,8 @@
 .todoItem-red{
     position: relative;
     width: 100% ;
-    height: 128.8px ;
-    border-radius: 10px;
+    height: 125.8px ;
+    border-radius: 12px;
     margin-top: 17px;
     background-color: #f76c6a;
 
@@ -22,7 +22,7 @@
 .todoItem-orange{
     position: relative;
     width: 100% ;
-    height: 128.8px ;
+    height: 124.8px ;
     border-radius: 10px;
     margin-top: 17px;
     background-color: #f79e89;
@@ -37,6 +37,8 @@
     color: rgb(215, 217, 219);
     display: flex;
     justify-content: space-between;
+    min-height: 32px;
+    max-height: 32px;
 }
 .Clock-logo{
     width: 18px;
@@ -46,10 +48,16 @@
 .heidden-Clock-logo{
     display: none;
 }
+.hidden{
+    visibility: hidden;
+}
+.show{
+    visibility: visible;
+}
 .decription{
     font-family:"montsratt" ;
-    letter-spacing: 1px;
-    font-size: 14.5px;
+    letter-spacing: .2px;
+    font-size: 13.5px;
     margin-left: 17px;
     padding-top: 6px ;
     color: rgb(215, 217, 219);
@@ -57,13 +65,14 @@
     width: 82%;
     overflow: hidden;
     line-height: 27px;
+    text-align: justify;
 
 }
 .display{
     position: absolute;
     display: inline;
-    right: 12.5%;
-    top: 50.5%;
+    right: 8.5%;
+    top: 51.5%;
     letter-spacing: 1px ;
     color: rgb(215, 217, 219);
     font-weight: bold;
@@ -81,7 +90,7 @@
     letter-spacing: 1px;
     font-size: 12px;
     margin-left: 17px;
-    margin-top: 13px ;
+    margin-top: 9.5px ;
     color: rgb(215, 217, 219);
 }
 .date p{
@@ -90,5 +99,14 @@
     margin-left: 3px; 
 }
 .date::before{ 
-    content: 'create at';
+    content: 'Create at';
+}
+
+.red{
+color: rgb(245, 8, 8)
+
+}
+.green{
+
+    color: green;
 }

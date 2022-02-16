@@ -43,9 +43,7 @@
     padding:10px 0 !important;
 }
 
-.ant-btn-primary:hover, .ant-btn-primary:focus {
-    background-color: #F79E89 !important;
-}
+
 .sinUp_link{
     width: 100%;
     position: absolute;

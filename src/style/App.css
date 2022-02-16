@@ -7,18 +7,27 @@
     color: rgba(53, 53, 53, 0.774);
     margin: 0 auto;
     padding: 0 3vh;
-    padding-top: 1%;
     left: 50%;
+    margin-top: 17px;
     transform: translateX(-50%);
     z-index: 1;
 }
 .power{
+    position: relative;
     display: flex;
     justify-content: space-between;
     padding: 0 5px;
+    left: 23px !important;
 }
 .power p:first-child{
     font-weight: 700;
     font-size: 14px;
     margin-right: 2px;
+}
+
+.Tower{
+    margin: 0 5px;
+}
+.time{
+    margin-left: -10px !important;
 }

@@ -10,18 +10,20 @@
     font-weight: normal;
     src: url("../font/Montserrat-VariableFont_wght.ttf") format("truetype");
 }
-.main-div-LogOutComponent{
+ .main-div-LogOutComponent{
     position: relative;
     width: 390px !important;
     height: 844px !important;
-    margin: auto;    
-    border: 1px solid rgb(0, 195, 255);
-  }
+    margin: auto;
+
+}
 .main-div-LogOutComponent .head{
+    position: absolute;
     display: flex;
     justify-content: space-between;
-    padding:0 6%;
-    margin-top: 10%;
+    padding:0 5.4%;
+    width: 100%;
+    top: 45px;
     align-items: center;
     color: #F79E89;
     font-family: 'babes';
@@ -34,7 +36,7 @@
 }
 .rafiki{
     margin:30%  7.9% 32% 7.9%  !important;
-}
+} 
 .fullName,
 .Email,
 .Password{
@@ -67,4 +69,9 @@
     font-family: 'montsratt';
     cursor: pointer;
 
+}
+.setting{
+    width: 25px;
+    cursor: pointer;
+    transform: translateX(2px);
 }

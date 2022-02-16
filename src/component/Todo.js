@@ -1,16 +1,17 @@
 import React from 'react';
-import Clock from '../img/icons8-clock-48.png'
-import '../style/Todo.css'
 import Moment from 'moment';
 import { useNavigate} from 'react-router-dom';
-import { useState } from 'react';
+
+// Import picture 
+import Clock from '../img/icons8-clock-48.png'
+
+// Import style
+import '../style/Todo.css'
+
 const Todo = ({user,status}) => {
-    let users= JSON.parse( localStorage.getItem('user') || "[]" );
-    console.log("hi")
 
     const Filter=()=>{
-        console.log(users.length)
-
+            // Condition for filtering
             if(status.status==='All'){
                 return (
                     <div className='show'>
@@ -75,9 +76,9 @@ const Todo = ({user,status}) => {
         }    
 
     const navigate=useNavigate();
-    
+    //  navigate to detail coponent
     function sendDetails(user){
-        navigate('/dtails',{state:{user:user}});  
+        navigate('/details',{state:{user:user}});  
     }
         return ( 
             <div >
