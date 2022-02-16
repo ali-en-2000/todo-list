@@ -1,58 +1,249 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import { Row} from 'antd';
 import { useNavigate } from 'react-router-dom';
 import Moment from 'moment';
+import { useState } from 'react';
 
-////////////////// images needed
+// Related to ant design
+import { Drawer,Button, Input, DatePicker, Space, Modal} from 'antd';
+import { Row} from 'antd';
+import { Tooltip } from 'antd';
+
+// Import pictures
 import trashBin from '../img/trash-bin.png'
 import pencil from '../img/pencil.png'
 import clock from '../img/icons8-clock-48.png'
 import arow_left from '../img/left.png'
-import { Tooltip } from 'antd';
+import gallery from '../img/icons8-gallery-49.png';
 
+// import style
 import '../style/Dtails.css'
-import { upload } from '@testing-library/user-event/dist/upload';
-const ShowDtails = (props) => {
-  const navigate=useNavigate()
+const{TextArea }=Input
 
-    const location = useLocation();
+
+
+
+const ShowDtails = () => {
+  const [style, setStyle] = useState("hidden"); 
+
+  const navigate=useNavigate()
+  const location = useLocation();
+
+  // show or close drawer
+  const [isVisible, setIsVisible] = useState(false);
+  const showDrawer = () => {
+    setStyle("show");
+    setTimeout(function () {
+      setIsVisible(true);
+    },0);
+  }
+  const closeDrawer = () => {
+    setIsVisible(false)
+    setTimeout(function () {
+      setStyle("hidden");
+    },300);
+
+  }
+
+  //  modal function for delete Todo
+  const { confirm } = Modal;
+  
+  function showConfirm() {
+      setTimeout(() => {
+      confirm({
+        onOk() {  
+        },
+        onCancel() {
+          ///   find index Todo from local storage
+          var user=JSON.parse(localStorage.getItem('user'))
+          const index = user.findIndex(object => {
+            return object.Title === location.state.user.Title;
+          });
+          ///   delete Todo
+          var myMovie = JSON.parse(localStorage.getItem("user"));
+          myMovie.splice(index,1);
+          localStorage.setItem("user",JSON.stringify(myMovie));
+          navigate("/home")
+        },
+      });
+    });
+  }
+
+  //  drawer and change value
+  var Edited_User;
+  const [newTitle, setNewTitle] = useState(location.state.user.Title);
+  const [newDescription, setNewDescription] = useState(location.state.user.Description);
+  const [newDeadline, setNewDeadline] = useState(location.state.user.Date);
+  const [newimage,setNewImag]=useState(location.state.user.Image)
+
+  // change value of old Todo to new Todo
+  Edited_User={
+    Edited_Title:newTitle, 
+    Edited_Description:newDescription, 
+    Edited_Deadline:newDeadline,
+    Edited_Image:newimage
+  }
+
+
+
+
+  // change Todo
+  function getchangeValue(){
+    ///   find index array
+    var user=JSON.parse(localStorage.getItem('user'))
+    const index = user.findIndex(users => {
+      return users.Title === location.state.user.Title;
+    });
+
+    ///    check if add some things
+    if(Edited_User.Edited_Title!=='' ){
+      user[index].Title=Edited_User.Edited_Title;
+      localStorage.setItem('user',JSON.stringify(user));
+    }
+    if(Edited_User.Edited_Description!==''){
+      user[index].Description=Edited_User.Edited_Description; 
+      localStorage.setItem('user',JSON.stringify(user))
+    }
+    if(Edited_User.Edited_Deadline!==''){
+      user[index].Date=Edited_User.Edited_Deadline;
+      localStorage.setItem('user',JSON.stringify(user))
+    }
+    if(Edited_User.Edited_Image!==''){
+      user[index].Image=Edited_User.Edited_Image;
+      localStorage.setItem('user',JSON.stringify(user))
+    }
+    ///    check if add some things
+    if(Edited_User.Edited_Title===''){
+      user[index].Title=Edited_User.Edited_Title;
+      localStorage.setItem('user',JSON.stringify(user));
+    }
+    if(Edited_User.Edited_Description===''){
+      user[index].Description=Edited_User.Edited_Description; 
+      localStorage.setItem('user',JSON.stringify(user))
+    }
+    if(Edited_User.Edited_Deadline===null){
+      user[index].Date='';
+      localStorage.setItem('user',JSON.stringify(user))
+    }
+    closeDrawer()
+  }
+
+  //  change image
+  const changeImage=(e)=>{
+    const file = e.target.files[0];    
+
+    const getBase64 = (file) => {
+      return new Promise((resolve,reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+        reader.readAsDataURL(file);
+      })
+    }
+
+    getBase64(file).then(base64 => {
+      setNewImag(base64)
+    }) 
+  }
+
+
     return ( 
         
         <div className='main-div-detail-page'>
 
             <Row className='head-div'>
                <div>
-                   <img alt='' src={arow_left} onClick={()=>{navigate("/home")}}/>
+                   <img alt='' className='arrow_left' src={arow_left} onClick={()=>{navigate("/home")}}/>
                </div>
-               <div>
+               <div >
                     <Tooltip 
-                    className='red'
                     placement="bottom" 
                     color={'#F79E89'}
-                    title={Moment(location.state.user.Date).format('DD MMM YYYY')}
+                    title={location.state.user.Date===''?'':Moment(location.state.user.Date).format('DD MMM YYYY')}
                     >
-                        <img alt='' src={clock} />
+                      <img 
+                        alt='' 
+                        src={clock} 
+                        className={location.state.user.Date===''?'opacity_half':'opacity_one'}/>
                     </Tooltip>
-                    <img alt='' src={pencil}/>
-                    <img alt='' src={trashBin}/>
+                    <img 
+                      alt='' 
+                      src={pencil}
+                      onClick={showDrawer}
+                    />
+
+                    <img 
+                      alt='' 
+                      src={trashBin}
+                      onClick={showConfirm}
+                    />
+
+
                </div>
-                <Row className='date-Todo-div'>
-                    {Moment(location.state.user.Date).format('DD MMM YYYY')}
-                </Row>
-            </Row>
-            <div className='content'>
-                <Row className='Title-Todo-div'>
-                    {location.state.user.Title}
-                </Row>
-                <Row className='description-Todo-div'>
-                {location.state.user.Description}
-                </Row>
-                <Row className='imag-Todo-div'>
-                {location.state.user.Image}
-                </Row>
-            </div>
-        </div>
+
+          </Row>
+          <div className='content'>
+              <Row className='Title-Todo-div'>
+                {Edited_User.Edited_Title}
+              </Row>
+              <Row className='description-Todo-div'>
+                {Edited_User.Edited_Description}
+              </Row>
+              <Row className='imag-Todo-div'>
+              <img
+                alt=''
+                src={Edited_User.Edited_Image}                
+                />
+              </Row>
+              <Row className='date-Todo-div'>
+                  {Moment(location.state.user.Date_create).format('DD MMM YYYY')}
+              </Row>
+          </div>
+
+
+          <Drawer
+            className={style}
+            visible={isVisible}
+            onClose={closeDrawer}
+            placement="bottom"
+            >        
+            <hr/>
+            <Input  
+              className='input-newTodo' 
+              placeholder='Title'
+              defaultValue={Edited_User.Edited_Title}
+              onChange={(e) => setNewTitle(e.target.value)}
+            ></Input> 
+            
+            <TextArea 
+              placeholder='Description'
+              className='description' 
+              defaultValue={location.state.user.Description}
+              onChange={(e) => setNewDescription(e.target.value)}
+            ></TextArea>  
+
+            <Space direction="vertical" className='div-datapicker' >
+            <DatePicker 
+              onChange={(Date) => setNewDeadline(Date)} 
+              placeholder='Deadline (optional)' 
+              defaultValue={location.state.user.Date===''?"":Moment(location.state.user.Date)}
+              format={'DD MMMM YYYY'}
+              />
+            </Space>
+
+            <button className='add-img-btn'>
+              <input 
+                className="add-img" 
+                onChange={(newImage)=>changeImage(newImage)}
+                type="file" 
+                />
+                <img src={gallery} alt="/" className="gallery"></img>
+            </button>
+
+            <Button className='add-todo-btn' onClick={()=>getchangeValue()}>ADD TODO</Button>
+          </Drawer>
+      
+    </div>
         
      );
 }

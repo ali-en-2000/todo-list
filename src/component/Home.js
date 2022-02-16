@@ -1,26 +1,32 @@
-import React from 'react';
-import "../style/home.css";
-import setting from '../img/settings.png';
-import todo from '../img/todoLogo.png';
-import addTodo from '../img/icons8-plus-+-150.png';
-import filter from '../img/icons8-funnel-100.png';
-import gallery from '../img/icons8-gallery-49.png';
-import { Row, Col, Button, Input} from 'antd';
-import { useState } from 'react';
-import { Drawer  } from 'antd';
 import {useNavigate} from "react-router-dom"
-import TodoList from "../component/TodoList";
+import { useState } from 'react';
+import React from 'react';
+//  Related to ant design
+
+import { Row, Col, Button, Input} from 'antd';
+import { Drawer  } from 'antd';
 import { DatePicker,Space } from 'antd';
 import { Menu, Dropdown } from 'antd';
 
+// Import pictures
+import addTodo from '../img/plus-circle.png';
+import setting from '../img/settings.png';
+import todo from '../img/todoLogo.png';
+import filter from '../img/icons8-funnel-100.png';
+import gallery from '../img/icons8-gallery-49.png';
 
+// Import page
+import TodoList from "../component/TodoList";
+
+// Import styles
+import "../style/home.css";
 import 'antd/dist/antd.css';
 import "react-datepicker/dist/react-datepicker.css";
-import "antd/dist/antd.css"
 const{TextArea }=Input;
 
 
 function Home() {
+
   const navigate=useNavigate()
   const [style, setStyle] = useState("hidden1"); 
   const [status, setStatus] = useState("All"); 
@@ -38,24 +44,53 @@ function Home() {
       setStyle("hidden1");
     },300);
   }
-  ///           save input todo in him state
+
+  ///  save input todo in him state
+  let users = JSON.parse( localStorage.getItem('user') || "[]" );
+  var user;
   const [title, setName] = useState('');
   const [description, setDescription] = useState('');
   const [date_create, setStartDateCreate] = useState(new Date());
   const [date, setStartDate] = useState('');
-  const [image, setImage] = useState('');
-  let users = JSON.parse( localStorage.getItem('user') || "[]" );
-  var user={
+  const [imagee, setImagee]=useState('')
+
+  // set input user to user Todo
+  user={
     Title:title, 
     Description:description, 
     Date:date,
     Date_create:date_create, 
-    Image:image
+    Image:imagee
   }
+
+  //  get image
+  const changeImage=(e)=>{
+    const file = e.target.files[0];    
+
+    const getBase64 = (file) => {
+      return new Promise((resolve,reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+        reader.readAsDataURL(file);
+      })
+    }
+
+    getBase64(file).then(base64 => {
+      setImagee(base64)
+    }) 
+  }
+
+
+  // save input data in local storage
   function saveTodo(){
     if(document.querySelector('input').defaultValue === '' && document.querySelector('TextArea').defaultValue === ''){
       closeDrawer();
     }else{
+      if(user.Date===null){
+        user.Date=''
+      }
+      // seve Todo in local storage
       users.push(user);
       localStorage.setItem('user',JSON.stringify(users));
       closeDrawer();
@@ -66,14 +101,11 @@ function Home() {
   const clearFild=()=>{
     setName('');
     setDescription('');
-    setImage('');
     document.querySelector('input').defaultValue = '';
     document.querySelector('TextArea').defaultValue = '';
-    document.querySelector('input').defaultValue = '';
-
   }
-  /////////// dropdown filter icon
 
+  // dropdown filter icon
   const menu = (
     <Menu>
       <Menu.Item key="0">
@@ -93,6 +125,9 @@ function Home() {
       </Menu.Item>
     </Menu>
   );
+
+
+
 
   return (
     <div className='main'>
@@ -128,6 +163,8 @@ function Home() {
       </Row>
 
       <div>
+
+        {/* button for how drawer */}
         <div className='newTodo-btn'onClick={showDrawer}>
           <img src={addTodo} alt='' ></img>
         </div>
@@ -151,30 +188,33 @@ function Home() {
             placeholder='Desciption' 
             value={description} 
             onChange={(e) => setDescription(e.target.value)}>
-          </TextArea>  
-          <Space direction="vertical" className='div-datapicker' >
+          </TextArea>
+
           {/* datepicker fro get deadline */}
+          <Space direction="vertical" className='div-datapicker' >
           <DatePicker 
             onChange={(Date) => setStartDate(Date)} 
             placeholder='Deadline (optional)' 
             format='DD MMMM yyyy' />
           </Space>
-          <Space direction="vertical" style={{display:'none'}} >
+
           {/* datepicker fro get date create */}
-          {/* fix onChange */}            
+          <Space direction="vertical" style={{display:'none'}} >
           <DatePicker 
-            onChange={(Dat) => setStartDateCreate(Dat)} 
+            onChange={(DateCreate) => setStartDateCreate(DateCreate)} 
             placeholder='Deadline (optional)' 
             format='DD MMMM yyyy' />
           </Space>
+
           <button className='add-img-btn'>
             <input 
               className="add-img" 
-              onChange={(e) => setImage(e.target.value)}
+              onChange={(imagee)=>changeImage(imagee)}
               type="file" 
-              value={image}/>
+              />
               <img src={gallery} alt="/" className="gallery"></img>
           </button>
+
           {/* button for save todo */}
           <Button className='add-todo-btn'onClick={saveTodo}>ADD TODO</Button>
         </Drawer>

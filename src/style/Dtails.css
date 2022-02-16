@@ -12,41 +12,47 @@
 }
 
 .main-div-detail-page{
+    position: relative;
     width: 390px !important;
     height: 844px !important;
     margin:0 auto;    
-    background-color: rgba(248, 248, 248, 0.884);
-    border: 1px solid rgb(255, 255, 255);
-    border: 1px solid red;
-    position: relative;
+    
 }
 .head-div{
     display: flex;
     position: relative;
     justify-content: space-between;
     width: 100%;
-    padding: 0 6%;
-    margin-top: 45px;
+    padding: 0 2.5%;
+    letter-spacing: 1px;
+    top: 45px;
 
 }
 
 .head-div img{
+    position: relative;
     width: 35px;
     padding: 0 5px;
     cursor: pointer;
+    font-weight: bolder;
+
+}
+.opacity_half{
+    opacity: .3;
+    
 }
 .content{
-    margin-top: 13px;
+    margin-top: 63px;
 
 }
 .Title-Todo-div{
     width: 100%;
-    padding: 0 9%;
+    padding: 0 6%;
     font-size: 25px;
     font-family: "babes";
 }
 .description-Todo-div{
-    width: 100%;
+    width: 100% ;
     padding: 0 6%;
     padding-top: 30px;
     font-family: 'montsratt';
@@ -54,13 +60,25 @@
     font-weight: bold;
     line-height: 24px;
     font-size: 15px;
-    margin-left: 12px;
-
+    letter-spacing: 1px;
 }
+
 .imag-Todo-div{
-    width: 100%;
+    position: relative;
+    width: 360px;
+    height: 370px;
     padding: 0 6%;
     margin-top: 25px;
+    margin-left: 20px;
+    background-repeat: no-repeat;
+
+}
+
+.imag-Todo-div img{
+    position: absolute;
+    max-width: 345px;
+    max-height: 365px;
+    margin-left: -21px;
 
 }
 .date-Todo-div{
@@ -68,22 +86,96 @@
     content: 'Created at';
     padding: 0 6%;
     width: 90%;
-    margin-top:760px;
-    z-index: 1000;
-
+    bottom: 15px;
+    visibility: visible;
 }
 .date-Todo-div::before{
     content: 'Created at';
     padding-right: 5px;
-    margin-left: 75px;
+    margin-left: 100px;
     letter-spacing: .5px;
 }
-.hi{
-    position: relative;
-    top: 500px;
-    border: 1px solid red;
-    margin-top: 500px !important;
+.drawer_detail_component{
+    margin-top: 50px;
+    overflow: hidden;
+    border: 1px solid #ebedf0;
+    border-radius: 2px;
+    text-align: center;
 }
-.red{
-    color: yellow !important;
+
+ /* modal style */
+
+.ant-modal-root{
+    transform: translateY(-100%);
+    width: 390px !important;
+    height: 844px !important;
+    margin:0 auto !important;   
+
+}
+.ant-modal-mask{
+    width: 390px !important;
+    margin:0 auto !important;    
+    height: 844px !important;
+ 
+
+}
+.ant-modal-wrap{
+    width: 416px !important;
+    margin:0 auto !important;    
+    height: 844px !important;
+
+}
+
+.ant-modal-body,
+.ant-modal-content,
+.ant-row .description-Todo-div{
+    width: 0px !important;
+    height: 0px !important;
+    margin: 0 auto !important;
+
+}
+
+.ant-row .imag-Todo-div{
+    width: 100px !important;
+}
+.anticon-exclamation-circle svg{
+    display: none !important;
+}
+.ant-modal-confirm-body-wrapper .ant-btn
+{
+    width: 300px;
+    height: 50px;
+    background-color: #f2f3f3;
+    border: none;
+    border-radius: 10px;
+    bottom: -490px;
+    margin-top: 14.5px;
+    margin-left: 14px !important;
+    left: 100px;
+    font-family: "montsratt";
+    
+}
+.ant-modal-confirm-body-wrapper .ant-btn span{
+    display: none;
+}
+
+.ant-modal-confirm-body-wrapper .ant-btn::after{
+    content: 'Delete TODO';
+    color: #f76c6aee;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+.ant-modal-confirm-body-wrapper .ant-btn-primary::after{
+    content: 'Cancel' !important;
+    color: rgb(41, 250, 41);
+
+}
+.hidden{
+
+    display: none;
+}
+.show{
+    display: inline;
+
+
 }
