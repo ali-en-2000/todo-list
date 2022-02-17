@@ -105,19 +105,11 @@
 
  /* modal style */
 
-.ant-modal-root{
-    transform: translateY(-100%);
-    width: 390px !important;
-    height: 844px !important;
-    margin:0 auto !important;   
-
-}
 .ant-modal-mask{
     width: 390px !important;
     margin:0 auto !important;    
     height: 844px !important;
  
-
 }
 .ant-modal-wrap{
     width: 416px !important;
@@ -125,7 +117,6 @@
     height: 844px !important;
 
 }
-
 .ant-modal-body,
 .ant-modal-content,
 .ant-row .description-Todo-div{
@@ -150,8 +141,8 @@
     border-radius: 10px;
     bottom: -490px;
     margin-top: 14.5px;
-    margin-left: 14px !important;
-    left: 100px;
+    margin-left: 0px !important;
+    left: 120px;
     font-family: "montsratt";
     
 }
@@ -170,6 +161,23 @@
     color: rgb(41, 250, 41);
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .hidden{
 
     display: none;

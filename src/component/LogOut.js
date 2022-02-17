@@ -36,7 +36,7 @@ const LogOut = () => {
                 </div>
                 <div className='Password'>
                     <p>Password</p>
-                    <p onClick={()=>navigate('/Forgetpas')}>Change Password</p>
+                    <p>{cookies.get('Password')}</p>
                 </div>
             </div>
             <button className='logout' onClick={()=>logout()}>LOG OUT</button>
