@@ -14,7 +14,8 @@ import trashBin from '../img/trash-bin.png'
 import pencil from '../img/pencil.png'
 import clock from '../img/icons8-clock-48.png'
 import arow_left from '../img/left.png'
-import gallery from '../img/icons8-gallery-49.png';
+import gallery_icon from '../img/icons8-gallery-49.png';
+import close_icon from '../img/close.png';
 
 // import style
 import '../style/Dtails.css'
@@ -76,15 +77,16 @@ const ShowDtails = () => {
   const [newDescription, setNewDescription] = useState(location.state.user.Description);
   const [newDeadline, setNewDeadline] = useState(location.state.user.Date);
   const [newimage,setNewImag]=useState(location.state.user.Image)
+  const [imgName, setImgName]=useState(location.state.user.ImgName)
 
   // change value of old Todo to new Todo
   Edited_User={
     Edited_Title:newTitle, 
     Edited_Description:newDescription, 
     Edited_Deadline:newDeadline,
-    Edited_Image:newimage
+    Edited_Image:newimage,
+    Edited_Image_Name:imgName
   }
-
 
 
   // change Todo
@@ -111,9 +113,10 @@ const ShowDtails = () => {
     }
     if(Edited_User.Edited_Image!==''){
       user[index].Image=Edited_User.Edited_Image;
+      user[index].ImgName=Edited_User.Edited_Image_Name;
       localStorage.setItem('user',JSON.stringify(user))
     }
-    ///    check if add some things
+    ///    Check if the fields are completely empty
     if(Edited_User.Edited_Title===''){
       user[index].Title=Edited_User.Edited_Title;
       localStorage.setItem('user',JSON.stringify(user));
@@ -126,12 +129,24 @@ const ShowDtails = () => {
       user[index].Date='';
       localStorage.setItem('user',JSON.stringify(user))
     }
+    if(Edited_User.Edited_Image===''){
+      user[index].Image='';
+      user[index].ImgName='';
+      
+      localStorage.setItem('user',JSON.stringify(user))
+    }
     setIndex(Edited_User.Edited_Title)
     closeDrawer()
   }
 
   //  change image
   const changeImage=(e)=>{
+    var files = e.target.files;
+    var filesArray = [].slice.call(files);
+    filesArray.forEach(e => {
+      setImgName(e.name)
+    });
+
     const file = e.target.files[0];    
 
     const getBase64 = (file) => {
@@ -146,6 +161,10 @@ const ShowDtails = () => {
     getBase64(file).then(base64 => {
       setNewImag(base64)
     }) 
+  }
+  function hiddenNameImage(){
+    setImgName('')
+    setNewImag('')
   }
 
 
@@ -238,8 +257,17 @@ const ShowDtails = () => {
                 className="add-img" 
                 onChange={(newImage)=>changeImage(newImage)}
                 type="file" 
-                />
-                <img src={gallery} alt="/" className="gallery"></img>
+                id='file'
+                />                
+                <label className="label" htmlFor="file">
+                    {Edited_User.Edited_Image_Name ===''?'Add Image (Optional)':Edited_User.Edited_Image_Name}
+                </label>
+                <img 
+                  src={imgName===''? gallery_icon:close_icon} 
+                  alt="/" 
+                  className="gallery"
+                  onClick={()=>hiddenNameImage()}
+                ></img>
             </button>
 
             <Button className='add-todo-btn' onClick={()=>getchangeValue()}>ADD TODO</Button>

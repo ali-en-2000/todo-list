@@ -217,11 +217,10 @@ font-family: "montsratt";
     background-color: #F79E89;
 
 }
-.add-img-btn::after{
-    content: 'Add Image (Optional)';
-    position: relative;
-    top: -40px;
-    left: -67px;
+.label{
+    position: absolute;
+    top: 7px;
+    left: 10px;
     color: rgba(243, 243, 243, 0.603);
     font-family: "montsratt";
     font-size: 16px;

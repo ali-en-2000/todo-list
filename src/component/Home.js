@@ -13,7 +13,8 @@ import addTodo from '../img/plus-circle.png';
 import setting from '../img/settings.png';
 import todo from '../img/todoLogo.png';
 import filter from '../img/icons8-funnel-100.png';
-import gallery from '../img/icons8-gallery-49.png';
+import gallery_icon from '../img/icons8-gallery-49.png';
+import close_icon from '../img/close.png';
 
 // Import page
 import TodoList from "../component/TodoList";
@@ -52,7 +53,8 @@ function Home() {
   const [description, setDescription] = useState('');
   const [date_create, setStartDateCreate] = useState(new Date());
   const [date, setStartDate] = useState('');
-  const [imagee, setImagee]=useState('')
+  const [image, setImage]=useState('')
+  const [imageName, setImageName]=useState('')
 
   // set input user to user Todo
   user={
@@ -60,13 +62,22 @@ function Home() {
     Description:description, 
     Date:date,
     Date_create:date_create, 
-    Image:imagee
+    Image:image,
+    ImgName:imageName
   }
 
   //  get image
   const changeImage=(e)=>{
-    const file = e.target.files[0];    
+    // find file name
+    var files = e.target.files;
+    var filesArray = [].slice.call(files);
+    filesArray.forEach(e => {
+      setImageName(e.name)
 
+    });
+
+    // prepare to save in local storage
+    const file = e.target.files[0];    
     const getBase64 = (file) => {
       return new Promise((resolve,reject) => {
         const reader = new FileReader();
@@ -77,8 +88,16 @@ function Home() {
     }
 
     getBase64(file).then(base64 => {
-      setImagee(base64)
+      if(imageName===''){
+      setImage(base64)
+      }else(setImage(''))
+
     }) 
+  }
+  function hiddenNameImage(){
+    setImageName("")
+    setImage('')
+    console.log('hi')
   }
 
 
@@ -90,6 +109,7 @@ function Home() {
       if(user.Date===null){
         user.Date=''
       }
+
       // seve Todo in local storage
       users.push(user);
       localStorage.setItem('user',JSON.stringify(users));
@@ -211,8 +231,15 @@ function Home() {
               className="add-img" 
               onChange={(imagee)=>changeImage(imagee)}
               type="file" 
+              id="file"
               />
-              <img src={gallery} alt="/" className="gallery"></img>
+              <label className="label" htmlFor="file">{imageName===''?'Add Image (Optional)':imageName}</label>
+              <img  
+                className='gallery' 
+                alt="/" 
+                src={imageName===''?gallery_icon:close_icon}
+                onClick={()=>hiddenNameImage()} >
+              </img>
           </button>
 
           {/* button for save todo */}
