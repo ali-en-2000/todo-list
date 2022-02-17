@@ -97,7 +97,6 @@ function Home() {
   function hiddenNameImage(){
     setImageName("")
     setImage('')
-    console.log('hi')
   }
 
 
