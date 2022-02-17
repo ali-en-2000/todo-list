@@ -71,6 +71,7 @@ const ShowDtails = () => {
 
   //  drawer and change value
   var Edited_User;
+  const [Index, setIndex] = useState(location.state.user.Title);
   const [newTitle, setNewTitle] = useState(location.state.user.Title);
   const [newDescription, setNewDescription] = useState(location.state.user.Description);
   const [newDeadline, setNewDeadline] = useState(location.state.user.Date);
@@ -86,14 +87,14 @@ const ShowDtails = () => {
 
 
 
-
   // change Todo
   function getchangeValue(){
     ///   find index array
     var user=JSON.parse(localStorage.getItem('user'))
     const index = user.findIndex(users => {
-      return users.Title === location.state.user.Title;
+      return users.Title === Index;
     });
+
 
     ///    check if add some things
     if(Edited_User.Edited_Title!=='' ){
@@ -125,6 +126,7 @@ const ShowDtails = () => {
       user[index].Date='';
       localStorage.setItem('user',JSON.stringify(user))
     }
+    setIndex(Edited_User.Edited_Title)
     closeDrawer()
   }
 
